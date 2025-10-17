@@ -1,0 +1,154 @@
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.containerEnter {
+  max-width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 6px;
+}
+
+.modal__block {
+  position: absolute;
+  z-index: 2;
+  left: calc(50% - 220px); 
+  top: calc(50% - 219.5px); 
+  opacity: 1;
+}
+
+.modal__form {
+  width: 440px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+}
+
+.modal__input {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d0cece;
+  padding: 8px 1px;
+  margin-bottom: 30px;
+  font: 400 18px/24px sans-serif;
+  color: #000; 
+}
+
+.modal__input::placeholder {
+  color: #d0cece;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+}
+
+.modal__btnEnter {
+  width: 278px;
+  height: 52px;
+  background-color: #580ea2;
+  border-radius: 6px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 18px/24px sans-serif;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal__btnEnter:hover,
+.modal__btnEnter:active {
+  background-color: #3497a4;
+}
+
+.modal__btnSignup,
+.modal__btnSignupEnt {
+  width: 278px;
+  height: 62px; 
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 18px/24px sans-serif;
+  letter-spacing: -0.05px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 1px solid #d0cece;
+}
+
+
+.modal__btnSignup {
+  background-color: transparent;
+  color: #000000;
+}
+
+.modal__btnSignup:hover,
+.modal__btnSignup:active {
+  background-color: #f4f5f6; 
+}
+
+.modal__btnSignupEnt {
+  background-color: #580ea2;
+  color: #ffffff;
+  height: 62px;
+  margin-left: 4px;
+}
+
+.modal__btnSignupEnt:hover,
+.modal__btnSignupEnt:active {
+  background-color: #3497a4;
+}
+
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+  color: red;
+}
+
+.login {
+  text-align: center;
+}
+
+.spinnerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #1677ff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

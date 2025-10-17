@@ -1,0 +1,121 @@
+
+.modal__logo {
+margin-bottom: 20px;
+    margin-top: 10px;
+  background-color: transparent;
+}
+
+.modal__logo img {
+  width: 98.24px;
+  height: auto;
+}
+
+.modal__btnEnter {
+  width: 376px;
+  height: 40px;
+  background-color: #1677FF;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.modal__btnEnter:hover {
+  background-color: #2955bc;
+}
+
+.modal__btnEnter:active {
+  background-color: #3497a4;
+}
+
+.title {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.modal__inputs {
+  width: 376px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.modal__inputs:hover {
+  border: 1px solid #1677FF;
+  box-shadow: 0 0 0 2px #0591FF1A;
+}
+
+
+.modal__input {
+  flex: 1;
+  border: none;
+  padding: 8px 4px;
+  font-size: 16px;
+  background: transparent;
+}
+
+.modal__input:focus {
+  outline: none;
+}
+
+
+.modal__input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #d0cece;
+}
+
+
+.errorContainer {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.spinnerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #1677ff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,150 @@
+.modal__input::placeholder,
+.modal__input:-ms-input-placeholder,
+.modal__input::-ms-input-placeholder,
+.modal__input::-webkit-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #d0cece;
+}
+
+
+.modal__btnEnter {
+  width: 100%;
+  height: 40px;
+  background-color: #1677ff;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
+.modal__btnEnter:hover:not(:disabled) {
+  background-color: #2955bc;
+}
+
+
+.modal__btnEnter:disabled {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(217, 217, 217, 1);
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+.modal__input {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d0cece;
+  padding: 8px 1px;
+  margin-right: 3px;
+  margin-bottom: 30px;
+  font-size: 18px; 
+  outline-color: #8d9baf;
+  text-align: center;
+  border-radius: 4px; 
+}
+
+
+.errorMessage {
+  font-size: 14px;
+  color: rgba(255, 77, 79, 1);
+  font-weight: 400;
+  line-height: 22px;
+  margin-top: -12px;
+  margin-bottom: 16px;
+}
+
+.codeInputBox {
+  width: 52px;
+  height: 60px;
+  border: 1px solid rgba(217, 217, 217, 1);
+  border-radius: 8px;
+  font-size: x-large;
+  text-align: center;
+  margin-right: 12px;
+  outline-color: #8d9baf;
+}
+
+
+.codeInputBox:last-child {
+  margin-right: 0;
+}
+
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 6px;
+}
+
+
+.subtitle {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 22px;
+}
+
+.modal__btn__signin {
+  width: 278px;
+  height: 62px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.05px;
+}
+
+.arrow {
+  width: 24px;
+  margin-top: 8px;
+  margin-left: 12px;
+}
+
+.modal__logo {
+  margin-top: -10px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+.modal__logo img {
+  width: 98.24px;
+  height: auto;
+}
+
+.codeInputWrapper {
+  height: 60px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center; 
+}
+
+
+.codeError {
+  border: 1px solid rgba(255, 77, 79, 1);
+}
+
+
+.block {
+  display: flex;
+}
