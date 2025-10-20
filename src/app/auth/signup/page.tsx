@@ -1,23 +1,24 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './signup.module.css';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { useAuthContext } from '../authContext';
 
-
-interface SignUpProps {
-  onComplete?: (code: string) => void;
-  initialCode?: string;
-}
-function SignUp({ onComplete = () => {}, initialCode = '' }: SignUpProps) {
+const SignUpContent = () => {
+  const searchParams = useSearchParams();
+  const initialCode = searchParams.get('code') || '';
+  const { onComplete } = useAuthContext();
   const NUM_INPUTS = 6;
   const VALID_CODE = '123456';
 
   const [code, setCode] = useState(() => Array(NUM_INPUTS).fill(''));
   const [buttonText, setButtonText] = useState('');
   const [isError, setIsError] = useState(false);
-const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     inputRefs.current = inputRefs.current.slice(0, NUM_INPUTS);
@@ -35,9 +36,9 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     return () => clearTimeout(timer);
   }, []);
 
-   const validateCode = useCallback((codeStr: string): boolean => codeStr === VALID_CODE, []);
+  const validateCode = useCallback((codeStr: string): boolean => codeStr === VALID_CODE, []);
 
-   const handleChange = useCallback(
+  const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
       const value = e.target.value;
       if (value.length > 1 || !/^\d*$/.test(value)) return;
@@ -48,11 +49,12 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
         return newCode;
       });
 
-    if (value && index < NUM_INPUTS - 1) {
+      if (value && index < NUM_INPUTS - 1) {
         inputRefs.current[index + 1]?.focus();
       }
     },
-    [NUM_INPUTS]);
+    [NUM_INPUTS]
+  );
 
   useEffect(() => {
     if (code.every(d => d !== '')) {
@@ -73,7 +75,7 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     }
   }, [code, validateCode, onComplete, buttonText]);
 
- const handleKeyDown = useCallback(
+  const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
       if (e.key === 'Backspace' && !code[index] && index > 0) {
         inputRefs.current[index - 1]?.focus();
@@ -82,26 +84,28 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     [code]
   );
 
- const handlePaste = useCallback(
+  const handlePaste = useCallback(
     (e: React.ClipboardEvent<HTMLInputElement>) => {
       e.preventDefault();
       const pasteData = e.clipboardData.getData('text').trim();
 
-    if (pasteData.length === NUM_INPUTS && /^\d+$/.test(pasteData)) {
-      const newCode = pasteData.split('');
-      setCode(newCode);
+      if (pasteData.length === NUM_INPUTS && /^\d+$/.test(pasteData)) {
+        const newCode = pasteData.split('');
+        setCode(newCode);
 
-      const valid = validateCode(pasteData);
-      setIsError(!valid);
-      setButtonText('Continue');
+        const valid = validateCode(pasteData);
+        setIsError(!valid);
+        setButtonText('Continue');
 
-      if (valid) {
-        onComplete?.(pasteData);
+        if (valid) {
+          onComplete?.(pasteData);
+        }
+
+        inputRefs.current[NUM_INPUTS - 1]?.focus();
       }
-
-      inputRefs.current[NUM_INPUTS - 1]?.focus();
-    }
-  }, [validateCode, onComplete]);
+    },
+    [validateCode, onComplete]
+  );
 
   return (
     <div className={styles.container}>
@@ -152,7 +156,8 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
             onChange={e => handleChange(e, i)}
             onKeyDown={e => handleKeyDown(e, i)}
             ref={(el: HTMLInputElement | null): void => {
-            inputRefs.current[i] = el;}}
+              inputRefs.current[i] = el;
+            }}
             className={classNames(styles.codeInputBox, {
               [styles.codeFilled]: digit !== '',
               [styles.codeError]: isError,
@@ -180,6 +185,14 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
       )}
     </div>
   );
-}
+};
 
-export default SignUp;
+const SignUp = () => {
+  return (
+    <Suspense fallback={<div>Loading form...</div>}>
+      <SignUpContent />
+    </Suspense>
+  );
+};
+
+export default SignUp; 

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLogin } from '@/app/hooks/useLoginMutation';
-
+import Link from 'next/link';
 
 export default function Signin() {
   const [email, setEmail] = useState('');
@@ -73,7 +73,7 @@ const handleLogin = async () => {
   }
   return (
     <>
-      <a href="/auth/signin">
+      <Link href="/auth/signin">
         <div className={styles.modal__logo}>
           <Image
             width={24}
@@ -83,7 +83,7 @@ const handleLogin = async () => {
             alt="logo"
           />
         </div>
-      </a>
+      </Link>
 
       <div className={styles.modal__title}>
         <div className={styles.title}>Sign in to your account to continue</div>
@@ -101,6 +101,7 @@ const handleLogin = async () => {
           className={classNames(styles.modal__input, styles.login)}
           type="text"
           placeholder="Email"
+          value={email}
           onChange={onChangeEmail}
         />
       </div>
@@ -117,6 +118,7 @@ const handleLogin = async () => {
           className={styles.modal__input}
           type="password"
           placeholder="Password"
+          value={password}
           onChange={onChangePassword}
         />
       </div>
@@ -124,16 +126,13 @@ const handleLogin = async () => {
 <div className={styles.errorContainer}>
   {errorMessage}
 </div>
-
-      <button 
-        type="button" 
-        className={styles.modal__btnEnter}
-        onClick={handleLogin}
-        disabled={loginMutation.isLoading}
-        
-      >
-        {loginMutation.isLoading ? 'Logging in...' : 'Log in'}
-      </button>
+ <button 
+  type="button" 
+  className={styles.modal__btnEnter}
+  onClick={handleLogin}
+>
+  Log in
+</button>
 
     </>
   );
