@@ -110,7 +110,7 @@ const SignUpContent = () => {
   return (
     <div className={styles.container}>
       <div className={styles.arrow}>
-        <a href="/auth/signin" aria-label="Go back to sign in">
+        <a href="/test/auth/signin" aria-label="Go back to sign in">
           <Image
             width={18}
             height={18}
