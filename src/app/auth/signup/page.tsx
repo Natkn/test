@@ -115,7 +115,7 @@ const SignUpContent = () => {
             width={18}
             height={18}
             className={styles.logo__modal}
-            src="/ArrowLeft.svg"
+            src="/images/ArrowLeft.svg"
             alt="Arrow Left"
           />
         </a>
@@ -126,7 +126,7 @@ const SignUpContent = () => {
           width={98}
           height={24}
           className={styles.logo__modal}
-          src="/logo.svg"
+          src="/images/logo.svg"
           alt="Logo"
         />
       </div>
